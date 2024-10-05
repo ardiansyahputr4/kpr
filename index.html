@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil KPR</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>KPR BTN Syariah</h1>
+    </header>
+    <main>
+        <!-- Informasi KPR -->
+        <section id="info-kpr">
+            <h2>Informasi KPR</h2>
+            <p>Bank BTN menyediakan berbagai pilihan KPR untuk membantu Anda memiliki rumah impian. Silakan pilih kabupaten dan kecamatan untuk melihat pilihan perumahan.</p>
+        </section>
+
+        <!-- Pemilihan Kabupaten dan Kecamatan -->
+        <section id="selection-section">
+            <h2>Pilih Kabupaten dan Kecamatan</h2>
+            <label for="kabupaten">Kabupaten:</label>
+            <select id="kabupaten" onchange="updateKecamatan()">
+                <option value="">Pilih Kabupaten</option>
+                <option value="Aceh Besar">Aceh Besar</option>
+                <option value="Bireuen">Bireuen</option>
+                <option value="Aceh Jaya">Aceh Jaya</option>
+                <option value="Aceh Utara">Aceh Utara</option>
+                <option value="Pidie">Pidie</option>
+                <option value="Simeulue">Simeulue</option>
+                <option value="Nagan Raya">Nagan Raya</option>
+                <option value="Bener Meriah">Bener Meriah</option>
+                <option value="Gayo Lues">Gayo Lues</option>
+                <option value="Langsa">Langsa</option>
+                <option value="Lhokseumawe">Lhokseumawe</option>
+                <!-- Tambahkan kabupaten lain sesuai kebutuhan -->
+            </select>
+
+            <label for="kecamatan">Kecamatan:</label>
+            <select id="kecamatan" onchange="showHousingOptions()">
+                <option value="">Pilih Kecamatan</option>
+                <!-- Kecamatan akan ditambahkan melalui JavaScript -->
+            </select>
+        </section>
+
+        <!-- Menampilkan Perumahan -->
+        <section id="housing-options" style="display:none;">
+            <h2>Perumahan KPR</h2>
+            <ul id="housing-list"></ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Bank BTN</p>
+    </footer>
+
+    <script>
+        // Data kecamatan untuk kabupaten
+        const kecamatanData = {
+            "Aceh Besar": ["Baiturrahman", "Kuta Alam", "Ulee Kareng", "Suka Makmue"],
+            "Bireuen": ["Jeunib", "Bireuen", "Peusangan", "Peudada"],
+            "Aceh Jaya": ["Teunom", "Panga", "Krueng Sabee", "Jaya"],
+            "Aceh Utara": ["Lhoksukon", "Simpang Keuramat", "Tanah Jambo Aye"],
+            "Pidie": ["Pidie", "Mutiara", "Mutiara Timur"],
+            "Simeulue": ["Simeulue Barat", "Simeulue Timur", "Teupah Barat"],
+            "Nagan Raya": ["Seunagan", "Seunagan Timur", "Darul Makmur"],
+            "Bener Meriah": ["Bener Meriah", "Gleno", "Pintu Rime Gayo"],
+            "Gayo Lues": ["Blangkejeren", "Putri Betung", "Pining"],
+            "Langsa": ["Langsa Kota", "Langsa Timur", "Langsa Barat"],
+            "Lhokseumawe": ["Lhokseumawe Kota", "Muara Satu", "Muara Dua"]
+            // Tambahkan kecamatan lain sesuai kebutuhan
+        };
+
+        // Data perumahan dengan gambar dan link ke halaman detail
+        const housingOptionsData = {
+            "Aceh Besar": {
+                "Baiturrahman": [
+                    {
+                        name: "Perumahan A",
+                        address: "Alamat A, Aceh Besar, Baiturrahman",
+                        type: "Tipe 36",
+                        img: "https://via.placeholder.com/150",
+                        detailPage: "detailrumah.html?id=1"
+                    },
+                    {
+                        name: "Perumahan B",
+                        address: "Alamat B, Aceh Besar, Baiturrahman",
+                        type: "Tipe 45",
+                        img: "https://via.placeholder.com/150",
+                        detailPage: "detailrumah.html?id=2"
+                    }
+                ],
+                "Kuta Alam": [
+                    {
+                        name: "Perumahan C",
+                        address: "Alamat C, Aceh Besar, Kuta Alam",
+                        type: "Tipe 50",
+                        img: "https://via.placeholder.com/150",
+                        detailPage: "detailrumah.html?id=3"
+                    }
+                ],
+                // Tambahkan perumahan lain sesuai kecamatan
+            },
+            "Bireuen": {
+                "Jeunib": [
+                    {
+                        name: "Perumahan D",
+                        address: "Alamat D, Bireuen, Jeunib",
+                        type: "Tipe 38",
+                        img: "https://via.placeholder.com/150",
+                        detailPage: "detailrumah.html?id=4"
+                    }
+                ],
+                "Bireuen": [
+                    {
+                        name: "Perumahan E",
+                        address: "Alamat E, Bireuen, Bireuen",
+                        type: "Tipe 40",
+                        img: "https://via.placeholder.com/150",
+                        detailPage: "detailrumah.html?id=5"
+                    }
+                ],
+                // Tambahkan perumahan lain sesuai kecamatan
+            },
+            "Aceh Jaya": {
+                "Teunom": [
+                    {
+                        name: "Perumahan F",
+                        address: "Alamat F, Aceh Jaya, Teunom",
+                        type: "Tipe 55",
+                        img: "https://via.placeholder.com/150",
+                        detailPage: "detailrumah.html?id=6"
+                    }
+                ]
+            },
+            "Aceh Utara": {
+                "Lhoksukon": [
+                    {
+                        name: "Perumahan G",
+                        address: "Alamat G, Aceh Utara, Lhoksukon",
+                        type: "Tipe 42",
+                        img: "https://via.placeholder.com/150",
+                        detailPage: "detailrumah.html?id=7"
+                    }
+                ]
+            },
+            "Pidie": {
+                "Pidie": [
+                    {
+                        name: "Perumahan H",
+                        address: "Alamat H, Pidie, Pidie",
+                        type: "Tipe 48",
+                        img: "https://via.placeholder.com/150",
+                        detailPage: "detailrumah.html?id=8"
+                    }
+                ]
+            },
+            "Simeulue": {
+                "Simeulue Barat": [
+                    {
+                        name: "Perumahan I",
+                        address: "Alamat I, Simeulue, Simeulue Barat",
+                        type: "Tipe 39",
+                        img: "https://via.placeholder.com/150",
+                        detailPage: "detailrumah.html?id=9"
+                    }
+                ]
+            },
+            "Nagan Raya": {
+                "Seunagan": [
+                    {
+                        name: "Perumahan J",
+                        address: "Alamat J, Nagan Raya, Seunagan",
+                        type: "Tipe 60",
+                        img: "https://via.placeholder.com/150",
+                        detailPage: "detailrumah.html?id=10"
+                    }
+                ]
+            },
+            "Bener Meriah": {
+                "Bener Meriah": [
+                    {
+                        name: "Perumahan K",
+                        address: "Alamat K, Bener Meriah, Bener Meriah",
+                        type: "Tipe 47",
+                        img: "https://via.placeholder.com/150",
+                        detailPage: "detailrumah.html?id=11"
+                    }
+                ]
+            },
+            "Gayo Lues": {
+                "Blangkejeren": [
+                    {
+                        name: "Perumahan L",
+                        address: "Alamat L, Gayo Lues, Blangkejeren",
+                        type: "Tipe 52",
+                        img: "https://via.placeholder.com/150",
+                        detailPage: "detailrumah.html?id=12"
+                    }
+                ]
+            },
+            "Langsa": {
+                "Langsa Kota": [
+                    {
+                        name: "Perumahan M",
+                        address: "Alamat M, Langsa, Langsa Kota",
+                        type: "Tipe 37",
+                        img: "https://via.placeholder.com/150",
+                        detailPage: "detailrumah.html?id=13"
+                    }
+                ]
+            },
+            "Lhokseumawe": {
+                "Lhokseumawe Kota": [
+                    {
+                        name: "Perumahan N",
+                        address: "Alamat N, Lhokseumawe, Lhokseumawe Kota",
+                        type: "Tipe 41",
+                        img: "https://via.placeholder.com/150",
+                        detailPage: "detailrumah.html?id=14"
+                    }
+                ]
+            }
+            // Tambahkan perumahan lain sesuai kebutuhan
+        };
+
+        function updateKecamatan() {
+            const kabupatenSelect = document.getElementById("kabupaten");
+            const kecamatanSelect = document.getElementById("kecamatan");
+            const selectedKabupaten = kabupatenSelect.value;
+
+            // Kosongkan dan sembunyikan kecamatan
+            kecamatanSelect.innerHTML = '<option value="">Pilih Kecamatan</option>';
+            document.getElementById("housing-options").style.display = "none";
+            document.getElementById("housing-list").innerHTML = "";
+
+            if (selectedKabupaten) {
+                // Tambahkan kecamatan yang sesuai
+                kecamatanData[selectedKabupaten].forEach(kecamatan => {
+                    const option = document.createElement("option");
+                    option.value = kecamatan;
+                    option.textContent = kecamatan;
+                    kecamatanSelect.appendChild(option);
+                });
+            }
+        }
+
+        function showHousingOptions() {
+            const kabupatenSelect = document.getElementById("kabupaten");
+            const kecamatanSelect = document.getElementById("kecamatan");
+            const selectedKabupaten = kabupatenSelect.value;
+            const selectedKecamatan = kecamatanSelect.value;
+
+            const housingList = document.getElementById("housing-list");
+            housingList.innerHTML = ""; // Kosongkan list
+
+            if (selectedKabupaten && selectedKecamatan) {
+                // Tampilkan perumahan yang sesuai
+                const housingOptions = housingOptionsData[selectedKabupaten][selectedKecamatan];
+                housingOptions.forEach(house => {
+                    const listItem = document.createElement("li");
+                    listItem.innerHTML = `
+                        <a href="${house.detailPage}" style="display: block; text-decoration: none; color: black;">
+                            <img src="${house.img}" alt="${house.name}">
+                            <h3>${house.name}</h3>
+                            <p>Alamat: ${house.address}</p>
+                            <p>Tipe: ${house.type}</p>
+                        </a>
+                    `;
+                    housingList.appendChild(listItem);
+                });
+                document.getElementById("housing-options").style.display = "block"; // Tampilkan bagian perumahan
+            }
+        }
+    </script>
+</body>
+</html>

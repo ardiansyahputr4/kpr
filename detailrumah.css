@@ -1,0 +1,66 @@
+/* Reset default margin dan padding */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Gaya umum */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Warna latar belakang yang lebih terang */
+    line-height: 1.6;
+}
+
+/* Gaya header */
+header {
+    background: #007bff; /* Biru */
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Gaya utama */
+main {
+    padding: 20px;
+}
+
+/* Gaya judul */
+h1, h2 {
+    margin: 15px 0;
+}
+
+/* Gaya untuk detail rumah */
+#house-detail {
+    background: white; /* Putih */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Gaya untuk info rumah */
+#house-info {
+    margin-top: 15px;
+}
+
+/* Gaya footer */
+footer {
+    text-align: center;
+    padding: 15px 0;
+    background: #007bff; /* Biru */
+    color: white;
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Gaya untuk harga */
+#house-price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #ff0000; /* Merah */
+}

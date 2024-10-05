@@ -1,0 +1,114 @@
+/* Reset default margin dan padding */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Gaya umum */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Warna latar belakang yang lebih terang */
+    line-height: 1.6;
+}
+
+/* Gaya header */
+header {
+    background: #007bff; /* Biru */
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Gaya utama */
+main {
+    padding: 20px;
+}
+
+/* Gaya judul */
+h1, h2, h3 {
+    margin: 15px 0;
+}
+
+/* Gaya section untuk pemilihan */
+#selection-section {
+    margin-bottom: 20px;
+    padding: 20px;
+    background: white; /* Putih */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Gaya untuk dropdown */
+select {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+}
+
+/* Gaya untuk list perumahan */
+#housing-options {
+    display: none;
+    margin-top: 20px;
+}
+
+/* Gaya untuk daftar perumahan */
+#housing-list {
+    list-style: none;
+    padding: 0;
+}
+
+/* Gaya untuk kartu perumahan */
+#housing-list li {
+    background: white; /* Putih */
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    border-left: 5px solid #ff0000; /* Merah */
+}
+
+#housing-list li:hover {
+    transform: scale(1.02);
+}
+
+/* Gaya untuk gambar perumahan */
+#housing-list img {
+    border-radius: 5px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Gaya footer */
+footer {
+    text-align: center;
+    padding: 15px 0;
+    background: #007bff; /* Biru */
+    color: white;
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Gaya untuk link dan tombol */
+button, a {
+    background: white; /* Warna putih untuk button */
+    color: #ff0000; /* Merah untuk teks */
+    padding: 10px 15px;
+    border: 1px solid #ff0000; /* Merah border */
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s; /* Menambahkan efek transisi untuk perubahan warna */
+}
+
+button:hover, a:hover {
+    background: #ffcccc; /* Merah muda saat hover */
+    color: #e60000; /* Merah lebih gelap saat hover */
+}
+

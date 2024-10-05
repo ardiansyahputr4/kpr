@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Rumah</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Detail Rumah</h1>
+    </header>
+    <main>
+        <div id="house-detail">
+            <h2>Nama Perumahan</h2>
+            <img src="" alt="Gambar Rumah" id="house-image" style="width:300px; height:auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+            <div id="house-info">
+                <p id="house-address"></p>
+                <p id="house-type"></p>
+                <p id="house-price"></p>
+                <p id="house-description"></p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Bank BTN</p>
+    </footer>
+
+    <script>
+        // Ambil parameter ID dari URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const houseId = urlParams.get('id');
+
+        // Data detail rumah
+        const houseDetails = {
+            1: {
+                name: "Perumahan A",
+                address: "Alamat A, Aceh Besar, Baiturrahman",
+                type: "Tipe 36",
+                price: "Rp 300.000.000",
+                img: "https://via.placeholder.com/300",
+                description: "Deskripsi untuk Perumahan A."
+            },
+            2: {
+                name: "Perumahan B",
+                address: "Alamat B, Aceh Besar, Baiturrahman",
+                type: "Tipe 45",
+                price: "Rp 350.000.000",
+                img: "https://via.placeholder.com/300",
+                description: "Deskripsi untuk Perumahan B."
+            },
+            3: {
+                name: "Perumahan C",
+                address: "Alamat C, Aceh Besar, Kuta Alam",
+                type: "Tipe 50",
+                price: "Rp 400.000.000",
+                img: "https://via.placeholder.com/300",
+                description: "Deskripsi untuk Perumahan C."
+            },
+            // Tambahkan detail rumah lain sesuai ID
+            // ...
+        };
+
+        // Menampilkan detail rumah
+        if (houseId in houseDetails) {
+            const house = houseDetails[houseId];
+            document.querySelector('#house-detail h2').textContent = house.name;
+            document.getElementById('house-image').src = house.img;
+            document.getElementById('house-address').textContent = "Alamat: " + house.address;
+            document.getElementById('house-type').textContent = "Tipe: " + house.type;
+            document.getElementById('house-price').textContent = "Harga: " + house.price;
+            document.getElementById('house-description').textContent = house.description;
+        } else {
+            document.getElementById('house-detail').innerHTML = "<p>Detail rumah tidak ditemukan.</p>";
+        }
+    </script>
+</body>
+</html>
